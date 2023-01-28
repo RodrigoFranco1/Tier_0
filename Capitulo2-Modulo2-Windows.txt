@@ -1,3 +1,4 @@
+# Tier 0
 # Comandos Curso 2 (Configurando el entorno)
 # Modulo 2 (Windows)
 
