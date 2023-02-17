@@ -5,12 +5,11 @@
 
 #-------------------------------------------#Scanners de Vulnerabilidades#-------------------------------#
 1 - https://github.com/secforce/sparta // escaner de vulnerabilidades y servicios mal configurados
-#-------------------------------------------#Explotación#------------------------------------------------# 
 
+#-------------------------------------------#Explotación#------------------------------------------------# 
 1 - https://github.com/The-Z-Labs/linux-exploit-suggester //herramienta para buscar exploit segun la versión del kernel linux
 2 - https://github.com/AonCyberLabs/Windows-Exploit-Suggester //herramienta para buscar exploit segun los hotfix windows
 
 #-------------------------------------------#Post-Explotación#-------------------------------------------#
-  
 1 - https://github.com/carlospolop/PEASS-ng //repositoro con scripts de escalada de privilegios
 2- https://github.com/S3cur3Th1sSh1t/Invoke-SharpLoader // carga payloads en powershell 
