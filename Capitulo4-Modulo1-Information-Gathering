@@ -17,8 +17,8 @@ Opciones de Nmap
 -g Especifica el puerto de origen para la exploración.
 
 #Ejemplos de enumeración de servicios y puertos con Nmap
-$> nmap [dirección ip / segmento] //escaneo basico de puertos y servicios 
-$> nmap -sC [dirección ip / segmento] //escaneo de puertos usando los scripts de nmap 
-$> nmap -sC -A [dirección ip/ segmento] //escaneo de puertos, servicios y sistema operativo en profundo
-$> nmap -sC -sV -A [dirección ip / segmento / ] //escaneo de puertos, servicios, sistema operativo y versiones
+$> nmap [dirección ip / segmento / archivo] //escaneo basico de puertos y servicios 
+$> nmap -sC [dirección ip / segmento / archivo] //escaneo de puertos usando los scripts de nmap 
+$> nmap -sC -A [dirección ip/ segmento / archivo] //escaneo de puertos, servicios y sistema operativo en profundo
+$> nmap -sC -sV -A [dirección ip / segmento /archivo] //escaneo de puertos, servicios, sistema operativo y versiones
 $> nmap 
