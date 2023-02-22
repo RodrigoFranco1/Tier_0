@@ -16,9 +16,9 @@ Opciones de Nmap
 -S 10.10.10.200 Especifica la dirección IP de origen para el análisis.
 -g Especifica el puerto de origen para la exploración.
 
-#Enumeración de servicios y puertos con Nmap
-$> nmap 187.190.50.85 //escaneo basico de puertos y servicios 
-$> nmap -sC 187.190.50.85 //escaneo de puertos usando los scripts de nmap 
-$> nmap -sC -A 187.190.50.85 //escaneo de puertos, servicios y sistema operativo en profundo
-$> nmap -sC -sV -A 187.190.50.85 //escaneo de puertos, servicios, sistema operativo y versiones
-
+#Ejemplos de enumeración de servicios y puertos con Nmap
+$> nmap [dirección ip / segmento] //escaneo basico de puertos y servicios 
+$> nmap -sC [dirección ip / segmento] //escaneo de puertos usando los scripts de nmap 
+$> nmap -sC -A [dirección ip/ segmento] //escaneo de puertos, servicios y sistema operativo en profundo
+$> nmap -sC -sV -A [dirección ip / segmento / ] //escaneo de puertos, servicios, sistema operativo y versiones
+$> nmap 
