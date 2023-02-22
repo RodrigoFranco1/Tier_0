@@ -2,3 +2,4 @@
 $> nmap 187.190.50.85 //escaneo basico de puertos y servicios 
 $> nmap -sC 187.190.50.85 //escaneo de puertos usando los scripts de nmap 
 $> nmap -sC -A 187.190.50.85 //escaneo de puertos, servicios y sistema operativo en profundo
+$> nmap -sC -sV -A 187.190.50.85 //escaneo de puertos, servicios, sistema operativo y versiones
