@@ -22,8 +22,8 @@ PS C:\htb> choco info pkg //Nos mostrará información sobre un paquete si este 
 PS C:\htb> choco install microsoft-windows-terminal //instalamos la terminal en el sistema
 
 
-- Instalando el WSL2 con Chocolatey -
-PS C:\htb> choco install WSL2
+- Instalando los paquetes esenciales con Chocolatey -
+PS C:\htb> choco install WSL2 python vscode git openssh openvpn wsl2
 
 - Añadiendo Exclusiones a Windows Defender - 
 PS C:\htb> Add-MpPreference -ExclusionPath "C:\Users\your user here\AppData\Local\Temp\chocolatey\" //añadimos la carpeta espeecificada a exclusiones del windows defender
