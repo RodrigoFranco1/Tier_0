@@ -1,3 +1,4 @@
+|----------------------------------------------------------- Uso de la herramienta nmap -----------------------------------------------|
 Opciones de Nmap 
 10.10.10.0/24 Rango de red de destino.
 -sn Desactiva el escaneo de puertos.
@@ -22,3 +23,5 @@ $> nmap [dirección ip / segmento] //escaneo basico de puertos y servicios
 $> nmap -sC [dirección ip / segmento / archivo] //escaneo de puertos usando los scripts de nmap 
 $> nmap -sC -A [dirección ip/ segmento / archivo] //escaneo de puertos, servicios y sistema operativo en profundo
 $> nmap -sC -sV -A [dirección ip / segmento /archivo] //escaneo de puertos, servicios, sistema operativo y versiones
+
+|----------------------------------------------------------- Uso de la herramienta Sparta ---------------------------------------------| 
