@@ -1,7 +1,5 @@
 # Tier 0
-# Comandos Curso 2 (Configurando el entorno)
-# Modulo 2 (Windows)
-
+# Comandos Curso 2 (Configurando el entorno Windows)
 
 - Aplicando Actualizaciones -
 PS C:\usuario> Get-ExecutionPolicy -List  //Verificamos nuestra Política de ejecución de sistemas para asegurarnos de que podemos descargar, cargar y ejecutar módulos y scripts (undefinded o unrestricted).
