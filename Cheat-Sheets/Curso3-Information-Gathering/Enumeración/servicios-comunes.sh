@@ -13,7 +13,7 @@ FTP
 | `nc -nv <FQDN/IP> 21` | Interactuar con el servicio FTP en el destino. |
 | `telnet <FQDN/IP> 21` | Interactuar con el servicio FTP en el destino. |
 | `openssl s_client -connect <FQDN/IP>:21 -starttls ftp` | Interactuar con el servicio FTP en el destino utilizando la conexión cifrada. |
-| `wget -m --no-passive ftp://anonymous:anonymous@<target>` | Descargar todos los archivos disponibles en el servidor FTP de destino. |
+| `wget -m --no-passive ftp://hostname:password@<ip o servidor>` | Descargar todos los archivos disponibles en el servidor FTP de destino. |
 
 
 SMB
