@@ -8,13 +8,14 @@ Transparencia de certificados SSL
 
 
 FTP
-| Comando | Descripción |
-| `ftp <FQDN/IP>` | Interactuar con el servicio FTP en el destino. |
-| `nc -nv <FQDN/IP> 21` | Interactuar con el servicio FTP en el destino. |
-| `telnet <FQDN/IP> 21` | Interactuar con el servicio FTP en el destino. |
-| `openssl s_client -connect <FQDN/IP>:21 -starttls ftp` | Interactuar con el servicio FTP en el destino utilizando la conexión cifrada. |
-| `wget -m --no-passive ftp://hostname:password@<ip o servidor>` | Descargar todos los archivos disponibles en el servidor FTP de destino. |
-
+| Comando | Descripción | 
+| ftp <FQDN/IP> | Interactuar con el servicio FTP en el destino. |
+| nc -nv <FQDN/IP> 21 | Interactuar con el servicio FTP en el destino. |
+| telnet <FQDN/IP> 21 | Interactuar con el servicio FTP en el destino. |
+| openssl s_client -connect <FQDN/IP>:21 -starttls ftp | Interactuar con el servicio FTP en el destino utilizando la conexión cifrada. |
+| wget -m --no-passive ftp://hostname:password@[ip o servidor] | Descargar todos los archivos disponibles en el servidor FTP de destino. |
+| put [ruta-archivo-local] | sube un archivo al directorio ftp
+| get [nombre-archivo] | Descarga un archivo del servidor ftp a la maquina local
 
 SMB
 | Comando | Descripción |
