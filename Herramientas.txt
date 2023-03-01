@@ -2,7 +2,7 @@
 
 
 #-------------------------------------------#Recopilación de información#--------------------------------#
-
+https://github.com/cddmp/enum4linux-ng.git //enumeración de dominos via RPC y SMB
 #-------------------------------------------#Scanners de Vulnerabilidades#-------------------------------#
 1 - https://github.com/secforce/sparta // escaner de vulnerabilidades y servicios mal configurados
 
