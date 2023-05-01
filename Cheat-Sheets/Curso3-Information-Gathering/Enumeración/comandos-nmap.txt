@@ -1,24 +1,42 @@
+|---------------------------------------------------------------------------------------------------------------------------
+| Combinaciones principales de Nmap 
+|
+| nmap -sV -sC -A 10.10.11.211 
+|   └─$ -sV: Escanea en busca de Servicios instalados y versión
+|     └─$  -sC: Utiliza los scripts standar relacionados a los servicios
+|       └─$  -A: Detección de sistema operativo
+|         
+| nmap -sV -sC -A --min-rate=2000 -p- 10.10.11.211 
+|    └─$ -p-: Analiza los 65,535 puertos disponibles en una PC
+|      └─$ --min-rate=2000: Establece la tasa de envío por encima de 2000 paquetes por segundo
 |----------------------------------------------------------------------------------------------------------------------------
-| Opciones de Nmap 
-| 10.10.10.0/24 Rango de red de destino.
-| -iL Lee las direcciones ip de un archivo
-| -sC Ejecuta los scripts de nmap.
-| -sn Desactiva el escaneo de puertos.
-| -p- Escanea los 65535 puertos de un activo (muy lento).
-| -sV Habilita la detección de versiones del sistema y los servicios
-| -Pn desactiva las solicitudes de eco ICMP
-| -n Deshabilita la resolución DNS.
-| -PE Realiza el escaneo de ping usando ICMP Echo Requests contra el objetivo.
-| --packet-trace Muestra todos los paquetes enviados y recibidos.
-| --reason Muestra el motivo de un resultado específico.
-| --disable-arp-ping Deshabilita las solicitudes de ping ARP.
-| --top-ports= Realiza un escaneo de scripts utilizando los scripts especificados.
-| -O Realiza un análisis de detección de SO para determinar el sistema operativo del objetivo.
-| -A Realiza detección de SO, detección de servicio y rastreo de rutas.
-| -D RND:5 Establece el número de señuelos aleatorios que se utilizarán para escanear el objetivo.
-| -e Especifica la interfaz de red que se utiliza para el análisis.
-| -S 10.10.10.200 Especifica la dirección IP de origen para el análisis.
-| -g Especifica el puerto de origen para la exploración.
+
+|----------------------------------------------------------------------------------------------------------------------------
+| Parametros para escaneo de hosts
+|  
+|
+|
+|----------------------------------------------------------------------------------------------------------------------------
+
+|----------------------------------------------------------------------------------------------------------------------------
+| Opciones de escaneo 
+| 
+| -sS: TCP SYN - escaneo por Stealth (Sigiloso) 
+| -sT: Connect() - escaneo por defecto de nmap 3 way HSKE
+| -sA: ACK - 
+| -sW: Window
+| -sM: Maimon scans
+| -sU: UDP Scan
+| -sN: TCP Null
+| -sF: FIN
+| -sX: Xmas
+| --scanflags <flags>: Customize TCP scan flags
+| -sI <zombie host[:probeport]>: Idle scan
+| -sY/sZ: SCTP INIT/COOKIE-ECHO scans
+| -sO: IP protocol scan
+| -b <FTP relay host>: FTP bounce scan
+|----------------------------------------------------------------------------------------------------------------------------
+
 |----------------------------------------------------------------------------------------------------------------------------
 | #Ejemplos de enumeración de servicios y puertos con Nmap
 | $> nmap -iL [ruta de archivo.txt]
