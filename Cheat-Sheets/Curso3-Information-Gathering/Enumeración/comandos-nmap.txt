@@ -131,11 +131,15 @@ PERFORMANCE
 
 |---------------------------------------| Opciones de performance | ---------------------------------------------------
 |
+| --initial-rtt-timeout 50ms :  
+| --max-rtt-timeout 100ms : 
 | --min-rate : Establece la cantidad minima de paquetes a enviar 
 | --max-retries : Establece la cantidad de reintentos si un puerto no responde (default 10) 
-| 
+| -T <1-5> : 0-Paranoico, 1-Sigilosi, 2-Educado, 4-Agresivo, 5-Violento. 
+|
 |----------------------------------------| Ejemplos de performance|----------------------------------------------------
 |
+| 
 |
 |-----------------------------------------------------------------------------------------------------------------------
 
