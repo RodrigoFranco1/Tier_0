@@ -1,5 +1,5 @@
-|---------------------------------------------------------------------------------------------------------------------------
-| Combinaciones principales de Nmap 
+|----------------------------------| Combinaciones principales de Nmap |------------------------------------------------
+|
 |
 | nmap -sV -sC -A 10.10.11.211 
 |   └─$ -sV: Escanea en busca de Servicios instalados y versión
@@ -9,24 +9,19 @@
 | nmap -sV -sC -A --min-rate=2000 -p- 10.10.11.211 
 |    └─$ -p-: Analiza los 65,535 puertos disponibles en una PC
 |      └─$ --min-rate=2000: Establece la tasa de envío por encima de 2000 paquetes por segundo
-|----------------------------------------------------------------------------------------------------------------------------
-
-|----------------------------------------------------------------------------------------------------------------------------
-| Parametros para escaneo de hosts
-|  
 |
-|
-|----------------------------------------------------------------------------------------------------------------------------
+|-----------------------------------------------------------------------------------------------------------------------
 
-|----------------------------------------------------------------------------------------------------------------------------
-| Opciones de escaneo 
+
+
+|------------------------------------------| Tipos de escaneo |------------------------------------------------------------
 | 
 | -sS: TCP SYN - escaneo por Stealth (Sigiloso) 
-| -sT: Connect() - escaneo por defecto de nmap 3 way HSKE
+| -sT: Connect() - El escaneo Connect es útil porque es más preciso para determinar el estado de un puerto, y también es el más sigiloso. 
 | -sA: ACK - 
 | -sW: Window
-| -sM: Maimon scans
-| -sU: UDP Scan
+| -sM: Maimon scans 
+| -sU: UDP Scan - Escaneo de puertos UDP
 | -sN: TCP Null
 | -sF: FIN
 | -sX: Xmas
@@ -35,13 +30,135 @@
 | -sY/sZ: SCTP INIT/COOKIE-ECHO scans
 | -sO: IP protocol scan
 | -b <FTP relay host>: FTP bounce scan
+|
 |----------------------------------------------------------------------------------------------------------------------------
 
-|----------------------------------------------------------------------------------------------------------------------------
-| #Ejemplos de enumeración de servicios y puertos con Nmap
-| $> nmap -iL [ruta de archivo.txt]
-| $> nmap [dirección ip / segmento] //escaneo basico de puertos y servicios 
-| $> nmap -sC [dirección ip / segmento / archivo] //escaneo de puertos usando los scripts de nmap 
-| $> nmap -sC -A [dirección ip/ segmento / archivo] //escaneo de puertos, servicios y sistema operativo en profundo
-| $> nmap -sC -sV -A [dirección ip / segmento /archivo] //escaneo de puertos, servicios, sistema operativo y versiones
-|----------------------------------------------------------------------------------------------------------------------------
+
+
+|----------------------------------------| Parametros para escaneo de hosts |-------------------------------------------
+| 
+| -iL: Usa una lista .txt o .lst para usar hosts especificados en un archivo
+| -PE: Ejecuta un ping usando peticiones ECHO ICMP 
+| --packet-trace: Muestra el trazado de los paquetes enviados y recibidos 
+| -sn: Desactiva el escaneo de puertos.
+| -oA tnet: Almacena los resultados en todos los formatos comenzando con el nombre 'tnet'.
+| --reason: Muestra la razón del resultado específico.
+|
+|-----------------------------------------| Ejemplos de definición de hosts |-------------------------------------------
+|
+| nmap -iL archivo.lst : Por lista 
+| nmap 10.0.0.1-20 : Por octetos
+| nmap 10.0.0.1 10.0.1.1 10.1.1.1 : Por IP
+| nmap 10.0.0.1/24 : por segmento
+|
+|------------------------------------------------------------------------------------------------------------------------
+
+
+
+| ----------------------------------------| Estado de los puertos |------------------------------------------------------
+|
+| open - Esto indica que se ha establecido la conexión con el puerto escaneado, pueden ser conexiones TCP, datagramas UDP y asociaciones SCTP.
+| closed - Cuando el puerto se muestra como cerrado, el protocolo TCP indica que el paquete que recibimos contiene un indicador RST. Este método de exploración también |          se puede utilizar para determinar si nuestro objetivo está "alive" o no.
+| filtered - Nmap no puede identificar correctamente si el puerto escaneado está abierto o cerrado porque no se devuelve ninguna respuesta del destino para el puerto
+| unfiltered - Este estado solo ocurre con el análisis TCP-ACK y significa que el puerto es accesible, pero no se puede determinar si está abierto o cerrado.
+| open|filtered - Si no obtenemos una respuesta para un puerto específico, Nmap lo establecerá en ese estado. Esto indica que un firewall o filtro de paquetes puede    |                 proteger el puerto.
+| closed|filtered	- Este estado solo ocurre en los escaneos de IP ID idle e indica que era imposible determinar si el puerto está cerrado o filtrado por un firewall.
+|
+|---------------------------------------| Descubrimiento de puertos | ----------------------------------------------------
+|
+| -p : Determina puertos especificos de manera individual o por rango
+| -p- : Escanea todos los puertos existentes en el host
+| --top-ports=10 : Escanea el top de puertos segun el numero especificado
+| -F : Escanea los principales 100 puertos
+|
+|----------------------------------------| Ejemplos de descubrimiento de puertos |-------------------------------------------
+|
+| nmap -p 22-445 10.0.0.1 - Escanea todos los puertos en el rango de 22 al 445
+| nmap -p 22,25,35,443,445 10.0.0.1 - Escanea los puertos especificados en la lista
+| nmap -p- 10.0.0.1 - Escanea todos los puertos existentes en el host
+| nmap --top-ports=15 - Escanea los primeros 15 puertos del activo
+| nmap -F 10.0.0.1 - Escanea los primeros 100 puertos del activo
+|
+|--------------------------------------------------------------------------------------------------------------------------
+
+
+
+|---------------------------------------| Enumeración de Servicios | ----------------------------------------------------
+|
+| -v : Habilita la verbosidad del escaneo lo que muestra mas información del progreso
+| --stats-every=5s : Muestra un avance del escaneo cada 5 segundos
+| -sV : Determina el servicio y versión instalados en el puerto
+| 
+|
+|----------------------------------------| Ejemplos de enumeración de servicios |-------------------------------------------
+|
+| nmap -F 10.0.0.1 -v  : Habilita el modo verbose
+| nmap -F 10.0.0.1 -sV : Al fnializar muestra servicios y versiones instalados en los puertos
+| nmap -F 10.0.0.1 --stats-every=5s : Muestra el avance del escaneo cada 5s
+|
+|--------------------------------------------------------------------------------------------------------------------------
+
+
+
+|---------------------------------------| Uso del Nmap Script Engine NSE | -------------------------------------------------
+|
+| auth - Determinación de las credenciales de autenticación.
+| broadcast - Los scripts, que se utilizan para la detección de host mediante broadcast y los hosts descubiertos, se pueden agregar     
+|             automáticamente a los escaneos restantes.
+| brute - Intenta logearse en los servicios usando fuerza bruta
+| default - Scripts default como con la opción -sC 
+| discovery - Evalúa servicios accesibles
+| dos - Realiza pruebas de denegación de servicios al puerto
+| exploit - Esta categoría de scripts intenta explotar vulnerabilidades conocidas para el puerto escaneado.
+| external - Scripts que utilizan servicios externos para su posterior procesamiento.
+| fuzzer - Esto utiliza scripts para identificar vulnerabilidades y manejo de paquetes inesperados enviando diferentes campos, lo que 
+|          puede tomar mucho tiempo.
+| intrusive - Scripts intrusivos que podrían ser muy agresivos para algunos equipos
+| malware - Busca si hay malware instalado en el sistema
+| safe - Scripts defensivos que no realizan accesos intrusivos y destructivos.
+| version - Extensión para la detección de servicio.
+| vuln - Identificación de vulnerabilidades específicas.
+|
+|----------------------------------------| Ejemplos de uso del NSE |-------------------------------------------
+|
+| nmap -F 10.0.0.1 -sC  : Usa los scripts standard
+| nmap -F 10.0.0.1 --script vuln,exploit : Usa uno o varios scripts determinados llamandolos por nombre
+| nmap -p445 10.0.0.1 --script=smb* : Usa todos los scripts disponibles sobre el servicio y puerto especificado
+|
+|--------------------------------------------------------------------------------------------------------------
+
+
+
+|---------------------------------------| Opciones de performance | ---------------------------------------------------
+|
+|
+|----------------------------------------| Ejemplos de performance|----------------------------------------------------
+|
+|
+|-----------------------------------------------------------------------------------------------------------------------
+
+
+
+|---------------------------------------| Almacenamiento de resultados | ----------------------------------------------------
+|
+| -oN : Estandard que genera un archivo .nmap
+| -oG : Compatible con grep genera un archivo .gnmap
+| -oX : Genera un archivo .xml
+| -oA : Almacena los resultados en los 3 formatos disponibles 
+|
+|----------------------------------------| Ejemplos de almacenamiento de resultados |-------------------------------------------
+|
+| nmap -F 10.0.0.1 -oA resultados : genera todos los formatos usando el nombre resultados
+| nmap -F 10.0.0.1 -oN resultados : genera el archivo .nmap usando el nombre resultados
+| nmap -F 10.0.0.1 -oG resultados : genera el archivo .gnmap usando el nombre resultados
+| nmap -F 10.0.0.1 -oX resultados : genera el archivo .xml usando el nombre resultados
+| xsltproc resultados.xml -o resultados.html : convertimos el .xml en un .html para verlo como reporte web
+|
+|--------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
