@@ -131,26 +131,38 @@ PERFORMANCE
 
 |---------------------------------------| Opciones de performance | ---------------------------------------------------
 |
-| --initial-rtt-timeout 50ms :  
-| --max-rtt-timeout 100ms : 
+| --initial-rtt-timeout 50ms : modificamos los tiempos limites para aumentar la velocidad
+| --max-rtt-timeout 100ms : modificamos los tiempos limites para aumentar la velocidad
 | --min-rate : Establece la cantidad minima de paquetes a enviar 
 | --max-retries : Establece la cantidad de reintentos si un puerto no responde (default 10) 
 | -T <1-5> : 0-Paranoico, 1-Sigilosi, 2-Educado, 4-Agresivo, 5-Violento. 
 |
 |----------------------------------------| Ejemplos de performance|----------------------------------------------------
 |
-| 
+| sudo nmap 10.129.2.0/24 -F --initial-rtt-timeout 50ms --max-rtt-timeout 100ms : modificamos los tiempos limites para aumentar la velocidad
+| sudo nmap 10.129.2.0/24 -F --max-retries 0 : configuramos os reintentos en 0 para aumentar la velocidad
+| sudo nmap 10.129.2.0/24 -F  --min-rate 300 : establecemos un minimo de 300 paquetes 
+| sudo nmap 10.129.2.0/24 -F -T 5 : establecemos el escaneo en modo agresivo 
 |
 |-----------------------------------------------------------------------------------------------------------------------
 
 EVASIÓN
 
 |---------------------------------------| Evasión de Firewall, IDS, IPS | ----------------------------------------------
-|
-|
+| -sS : Syn Scan - Escaneo sigiloso
+| -sT : Concet scan - Escaneo sigiloso que no deja conexiones sin finalizar
+| -sA : ACK Scan - El más dificil de detectar, ya que solo envía banderas ACK y sel firewall no puede determinar si la conexión se estableció desde la red |                  externa o la red interna.
+| -D RND:5 : Genera 5 IP random como sueñuelos 
+| 
 |--------------------------------------| Ejemplos de Evasión de Firewall, IDS, IPS |------------------------------------
 |
-|
+| sudo nmap 10.129.2.28 -p 21,22,25 -sS -Pn -n --disable-arp-ping --packet-trace : SYN-Scan
+| sudo nmap 10.129.2.28 -p 21,22,25 -sA -Pn -n --disable-arp-ping --packet-trace : ACK-Scan
+| sudo nmap 10.129.2.28 -p 80 -sS -Pn --disable-arp-ping --packet-trace -D RND:5 : Usando 5 señuelos
+| sudo nmap 10.129.2.28 -n -Pn -p 445 -O -S 10.129.2.200 -e tun0 : ip spoofing para reemplazar la direccion IP origen
+| sudo nmap 10.129.2.28 -p50000 -sS -Pn -n --disable-arp-ping --packet-trace : EScaneo Syn desde 7un puerto filtrado
+| sudo nmap 10.129.2.28 -p50000 -sS -Pn -n --disable-arp-ping --packet-trace --source-port 53 : escaneo syn desde un puerto dns
+| ncat -nv --source-port 53 10.129.2.28 50000 : uso de netcat para conectarse a un puerto filtrado
 |-----------------------------------------------------------------------------------------------------------------------
 
 REPORTING
