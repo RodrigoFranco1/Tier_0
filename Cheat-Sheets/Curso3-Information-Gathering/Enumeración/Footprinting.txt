@@ -1,10 +1,23 @@
 ## Enumeración basada en infraestructura de servicios comunes 
 
+Información de dominio 
+  |-------------------------------------------------------------------|
+  |            URL           |        Descripción                     |
+  |-------------------------------------------------------------------|
+  |
+  |
+  |
+  |
+  |
+  |
+  |
+  
+  
 WEB
-Transparencia de certificados SSL
-|  Comando | Descripción |
-| curl -s https://crt.sh/\?q\=<target-domain>\&output\=json | jq . | Transparencia del certificado. |
-| for i in $(cat ip-addresses.txt);do shodan host $i;done | Escanear cada dirección IP en una lista usando Shodan. |
+  Transparencia de certificados SSL
+  |  Comando | Descripción |
+  | curl -s https://crt.sh/\?q\=<target-domain>\&output\=json | jq . | Transparencia del certificado. |
+  | for i in $(cat ip-addresses.txt);do shodan host $i;done | Escanear cada dirección IP en una lista usando Shodan. |
 
 
 FTP
