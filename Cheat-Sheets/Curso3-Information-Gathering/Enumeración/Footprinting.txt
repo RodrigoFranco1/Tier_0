@@ -9,7 +9,6 @@ Información de dominio
   | https://www.virustotal.com/gui/home/url | Buscar dominios por antivirus     |
   | https://whois.domaintools.com           | Whois domain tools                |
   |-----------------------------------------------------------------------------|
-  
   |----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
   | Extracción de dominios y direcciones IP usando curl y shodan.                                                                                                        |
   |----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -22,18 +21,28 @@ Información de dominio
   | Usamos sodan para analizar las direcciones ip del arcivo "direcciones-ip.txt"                                                                                        |
   | $ for i in $(cat ip-addresses.txt);do shodan host $i;done                                                                                                            |
   |----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  
+  |--------------------------------------------------------------------------|
+  | Uso de la erramienta DIG para extraer los registros DNS                  |
+  |--------------------------------------------------------------------------|
+  | dig any domain.com          |
+  |                             |
+  |                             |
+  |                             |
+  |                             |
+  |                             |
   
 FTP
-| Comando | Descripción | 
-| ftp <FQDN/IP> | Interactuar con el servicio FTP en el destino. |
-| nc -nv <FQDN/IP> 21 | Interactuar con el servicio FTP en el destino. |
-| telnet <FQDN/IP> 21 | Interactuar con el servicio FTP en el destino. |
-| openssl s_client -connect <FQDN/IP>:21 -starttls ftp | Interactuar con el servicio FTP en el destino utilizando la conexión cifrada. |
-| wget -m --no-passive ftp://hostname:password@[ip o servidor] | Descargar todos los archivos disponibles en el servidor FTP de destino. |
-| put [ruta-archivo-local] | sube un archivo al directorio ftp
-| get [nombre-archivo] | Descarga un archivo del servidor ftp a la maquina local
-
+  |------------------------------------------------------------------------------------------------------------------------------------------|
+  | Comando | Descripción | 
+  | ftp <FQDN/IP> | Interactuar con el servicio FTP en el destino. |
+  | nc -nv <FQDN/IP> 21 | Interactuar con el servicio FTP en el destino. |
+  | telnet <FQDN/IP> 21 | Interactuar con el servicio FTP en el destino. |
+  | openssl s_client -connect <FQDN/IP>:21 -starttls ftp | Interactuar con el servicio FTP en el destino utilizando la conexión cifrada. |
+  | wget -m --no-passive ftp://hostname:password@[ip o servidor] | Descargar todos los archivos disponibles en el servidor FTP de destino. |
+  | put [ruta-archivo-local] | sube un archivo al directorio ftp
+  | get [nombre-archivo] | Descarga un archivo del servidor ftp a la maquina local
+  |-----------------------------------------------------------------------------------------------------------------------------------------|
+  
 SMB
 | Comando | Descripción |
 | `smbclient -N -L //<FQDN/IP>` | Autenticación de sesión nula en SMB. |
