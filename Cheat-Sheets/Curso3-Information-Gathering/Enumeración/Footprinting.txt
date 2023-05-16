@@ -1,25 +1,29 @@
 ## Enumeración basada en infraestructura de servicios comunes 
 
 Información de dominio 
-  |-------------------------------------------------------------------|
-  |            URL           |        Descripción                     |
-  |-------------------------------------------------------------------|
-  |
-  |
-  |
-  |
-  |
-  |
-  |
+  |-----------------------------------------------------------------------------|
+  |            URL                          |           Descripción             |
+  |-----------------------------------------------------------------------------|
+  | https://crt.sh                          | Transparencia del certificado SSL | 
+  | https://searchdns.netcraft.com          | Buscar en Internet por dominio    |
+  | https://www.virustotal.com/gui/home/url | Buscar dominios por antivirus     |
+  | https://whois.domaintools.com           | Whois domain tools                |
+  |-----------------------------------------------------------------------------|
+  
+  |----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | Extracción de dominios y direcciones IP usando curl y shodan.                                                                                                        |
+  |----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | Enumeramos los sudominos por instancias unicas usando curl y formato json                                                                                            |
+  | $ curl -s https://crt.sh/\?q\=dominio.com\&output\=json | jq . | grep name | cut -d":" -f2 | grep -v "CN=" | cut -d'"' -f2 | awk '{gsub(/\\n/,"\n");}1;' | sort -u   |
+  |                                                                                                                                                                      |
+  | Enumeramos de todos los dominios los que estén ospedados por la empresa y lo almacenamos en un arcivo                                                                |
+  | $ for i in $(cat subdomainlist);do host $i | grep "has address" | grep inlanefreight.com | cut -d" " -f4 >> direcciones-ip.txt;done                                  |
+  |                                                                                                                                                                      |
+  | Usamos sodan para analizar las direcciones ip del arcivo "direcciones-ip.txt"                                                                                        |
+  | $ for i in $(cat ip-addresses.txt);do shodan host $i;done                                                                                                            |
+  |----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
   
   
-WEB
-  Transparencia de certificados SSL
-  |  Comando | Descripción |
-  | curl -s https://crt.sh/\?q\=<target-domain>\&output\=json | jq . | Transparencia del certificado. |
-  | for i in $(cat ip-addresses.txt);do shodan host $i;done | Escanear cada dirección IP en una lista usando Shodan. |
-
-
 FTP
 | Comando | Descripción | 
 | ftp <FQDN/IP> | Interactuar con el servicio FTP en el destino. |
