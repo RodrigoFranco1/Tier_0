@@ -15,7 +15,7 @@ Información de dominio
   | Enumeramos los sudominos por instancias unicas usando curl y formato json                                                                                            |
   | $ curl -s https://crt.sh/\?q\=dominio.com\&output\=json | jq . | grep name | cut -d":" -f2 | grep -v "CN=" | cut -d'"' -f2 | awk '{gsub(/\\n/,"\n");}1;' | sort -u   |
   |                                                                                                                                                                      |
-  | Enumeramos de todos los dominios los que estén ospedados por la empresa y lo almacenamos en un arcivo                                                                |
+  | Enumeramos de todos los dominios los que estén hospedados por la empresa y lo almacenamos en un arcivo                                                                |
   | $ for i in $(cat subdomainlist);do host $i | grep "has address" | grep inlanefreight.com | cut -d" " -f4 >> direcciones-ip.txt;done                                  |
   |                                                                                                                                                                      |
   | Usamos sodan para analizar las direcciones ip del arcivo "direcciones-ip.txt"                                                                                        |
