@@ -1,6 +1,6 @@
-## Enumeración basada en infraestructura de servicios comunes 
+ Enumeración basada en infraestructura de servicios comunes
 
-Información de dominio 
+1- Domain Name Service (DNS)
   |-----------------------------------------------------------------------------|
   |            URL                          |           Descripción             |
   |-----------------------------------------------------------------------------|
@@ -9,29 +9,31 @@ Información de dominio
   | https://www.virustotal.com/gui/home/url | Buscar dominios por antivirus     |
   | https://whois.domaintools.com           | Whois domain tools                |
   |-----------------------------------------------------------------------------|
+  
   |----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
   | Extracción de dominios y direcciones IP usando curl y shodan.                                                                                                        |
   |----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
   | Enumeramos los sudominos por instancias unicas usando curl y formato json                                                                                            |
   | $ curl -s https://crt.sh/\?q\=dominio.com\&output\=json | jq . | grep name | cut -d":" -f2 | grep -v "CN=" | cut -d'"' -f2 | awk '{gsub(/\\n/,"\n");}1;' | sort -u   |
   |                                                                                                                                                                      |
-  | Enumeramos de todos los dominios los que estén hospedados por la empresa y lo almacenamos en un arcivo                                                                |
+  | Enumeramos de todos los dominios los que estén hospedados por la empresa y lo almacenamos en un arcivo                                                               |
   | $ for i in $(cat subdomainlist);do host $i | grep "has address" | grep inlanefreight.com | cut -d" " -f4 >> direcciones-ip.txt;done                                  |
   |                                                                                                                                                                      |
   | Usamos sodan para analizar las direcciones ip del arcivo "direcciones-ip.txt"                                                                                        |
   | $ for i in $(cat ip-addresses.txt);do shodan host $i;done                                                                                                            |
   |----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  |--------------------------------------------------------------------------|
-  | Uso de la erramienta DIG para extraer los registros DNS                  |
-  |--------------------------------------------------------------------------|
-  | dig any domain.com          |
-  |                             |
-  |                             |
-  |                             |
-  |                             |
-  |                             |
   
-FTP
+  |----------------------------------------------------------------------------------------------------------------------------------------|
+  | Uso de la herramienta DIG para extraer los registros DNS                                                                               |
+  |----------------------------------------------------------------------------------------------------------------------------------------|
+  | Comando                     |  Descripción                                                                                             |
+  |----------------------------------------------------------------------------------------------------------------------------------------|
+  | dig any domain.com          |  Realiza una consulta DNS para todos los tipos de registros de DNS disponibles para el dominio           |
+  |-----------------------------|----------------------------------------------------------------------------------------------------------|
+
+
+
+2- File Transfer Protocol (FTP)
   |------------------------------------------------------------------------------------------------------------------------------------------|
   | Comando | Descripción | 
   | ftp <FQDN/IP> | Interactuar con el servicio FTP en el destino. |
@@ -43,7 +45,8 @@ FTP
   | get [nombre-archivo] | Descarga un archivo del servidor ftp a la maquina local
   |-----------------------------------------------------------------------------------------------------------------------------------------|
   
-SMB
+3- SMB
+
 | Comando | Descripción |
 | `smbclient -N -L //<FQDN/IP>` | Autenticación de sesión nula en SMB. |
 | `smbclient //<FQDN/IP>/<share>` | Conectarse a un recurso compartido SMB específico. |
@@ -55,6 +58,7 @@ SMB
 
 
 NFS
+
 | Comando | Descripción |
 |-|-|
 | `showmount -e <FQDN/IP>` | Mostrar las acciones NFS disponibles. |
@@ -63,6 +67,7 @@ NFS
 
 
 DNS
+
 | Comando | Descripción |
 | `dig ns <domain.tld> @<nameserver>` | Solicitud NS al servidor de nombres específico. |
 | `dig any <domain.tld> @<nameserver>` | CUALQUIER solicitud al servidor de nombres específico. |
@@ -72,11 +77,13 @@ DNS
 
 
 SMTP
+
 | Comando | Descripción |
 | `telnet <FQDN/IP> 25` ||
 
 
 IMAP/POP3
+
 | Comando | Descripción |
 | `curl -k 'imaps:/<FQDN/IP>' -user <user>:<password>` | Inicie sesión en el servicio IMAPS usando cURL. |
 | `openssl s_client -connect <FQDN/IP>:imaps` | Conectarse al servicio IMAPS. |
@@ -84,6 +91,7 @@ IMAP/POP3
 
 
 SNMP
+
 | Comando | Descripción |
 | `snmpwalk -v2c -c <community string> <FQDN/IP>` | Consulta de OIDs usando snmpwalk. |
 | `onesixtyone -c community-strings.list <FQDN/IP>` | Cadenas de comunidad brutas del servicio SNMP. |
@@ -91,16 +99,19 @@ SNMP
 
 
 MySQL
+
 | Comando | Descripción |
 | `mysql -u <user> -p<password> -h <FQDN/IP>` | Iniciar sesión en el servidor MySQL. |
 
 
 MSSQL
+
 | Comando | Descripción |
 | `mssqlclient.py <user>@<FQDN/IP> -windows-auth` | Inicie sesión en el servidor MSSQL usando la autenticación de Windows. |
 
 
 IPMI
+
 | Comando | Descripción |
 | msf6 auxiliar(escáner/ipmi/ipmi_version)` | Detección de versiones IPMI. |
 | `msf6 auxiliar(escáner/ipmi/ipmi_dumphashes)` | Descarga hashes IPMI. |
