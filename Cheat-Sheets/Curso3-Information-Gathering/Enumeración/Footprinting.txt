@@ -23,39 +23,39 @@
   | $ for i in $(cat ip-addresses.txt);do shodan host $i;done                                                                                                            |
   |----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
   
-  |----------------------------------------------------------------------------------------------------------------------------------------|
-  | Uso de la herramienta DIG para extraer los registros DNS                                                                               |
-  |----------------------------------------------------------------------------------------------------------------------------------------|
-  | Comando                     |         Descripción                                                                                      |
-  |----------------------------------------------------------------------------------------------------------------------------------------|
-  | dig any domain.com          |  Realiza una consulta DNS para todos los tipos de registros de DNS disponibles para el dominio           |
-  |----------------------------------------------------------------------------------------------------------------------------------------|
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | Uso de la herramienta DIG para extraer los registros DNS                                                                          |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | Comando                     |         Descripción                                                                                 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | dig any domain.com          |  Realiza una consulta DNS para todos los tipos de registros de DNS disponibles para el dominio      |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
 
-
-
-2- File Transfer Protocol (FTP)
-  |------------------------------------------------------------------------------------------------------------------------------------------|
-  | Comando | Descripción | 
-  | ftp <FQDN/IP> | Interactuar con el servicio FTP en el destino. |
-  | nc -nv <FQDN/IP> 21 | Interactuar con el servicio FTP en el destino. |
-  | telnet <FQDN/IP> 21 | Interactuar con el servicio FTP en el destino. |
-  | openssl s_client -connect <FQDN/IP>:21 -starttls ftp | Interactuar con el servicio FTP en el destino utilizando la conexión cifrada. |
-  | wget -m --no-passive ftp://hostname:password@[ip o servidor] | Descargar todos los archivos disponibles en el servidor FTP de destino. |
-  | put [ruta-archivo-local] | sube un archivo al directorio ftp
-  | get [nombre-archivo] | Descarga un archivo del servidor ftp a la maquina local
+2- File Transfer Protocol (FTP) (TFTP)
+  |-----------------------------------------------------------------------------------------------------------------------------------------|
+  | Comando                            |         Descripción                                                                                |
+  |-----------------------------------------------------------------------------------------------------------------------------------------|
+  | ftp <IP>                           |        Interactuar con el servicio FTP en el destino.                                              |
+  | nc -nv <FQDN/IP> 21 | Interactuar con el servicio FTP en el destino.                                                                    |
+  | telnet <FQDN/IP> 21 | Interactuar con el servicio FTP en el destino.                                                                    |
+  | openssl s_client -connect <FQDN/IP>:21 -starttls ftp | Interactuar con el servicio FTP en el destino utilizando la conexión cifrada.    |
+  | wget -m --no-passive ftp://hostname:password@[ip o servidor] | Descargar todos los archivos disponibles en el servidor FTP de destino.  |
+  | put [ruta-archivo-local] | sube un archivo al directorio ftp                                                                            |
+  | get [nombre-archivo] | Descarga un archivo del servidor ftp a la maquina local                                                          | 
   |-----------------------------------------------------------------------------------------------------------------------------------------|
   
-3- SMB
+3- Server Message Block  (SMB)
 
-| Comando | Descripción |
-| `smbclient -N -L //<FQDN/IP>` | Autenticación de sesión nula en SMB. |
-| `smbclient //<FQDN/IP>/<share>` | Conectarse a un recurso compartido SMB específico. |
-| `rpcclient -U "" <FQDN/IP>` | Interacción con el objetivo usando RPC. |
-| `samrdump.py <FQDN/IP>` | Enumeración de nombres de usuario usando scripts Impacket. |
-| `smbmap -H <FQDN/IP>` | Enumeración de acciones SMB. |
-| `crackmapexec smb <FQDN/IP> -shares -u '' -p ''` | Enumeración de acciones SMB usando autenticación de sesión nula. |
-| `enum4linux-ng.py <FQDN/IP> -A` | Enumeración de SMB usando enum4linux. |
-
+ |------------------------------------------------------------------------------------------------------------------------------------------|
+ | Comando | Descripción |
+ | `smbclient -N -L //<FQDN/IP>` | Autenticación de sesión nula en SMB. |
+ | `smbclient //<FQDN/IP>/<share>` | Conectarse a un recurso compartido SMB específico. |
+ | `rpcclient -U "" <FQDN/IP>` | Interacción con el objetivo usando RPC. |
+ | `samrdump.py <FQDN/IP>` | Enumeración de nombres de usuario usando scripts Impacket. |
+ | `smbmap -H <FQDN/IP>` | Enumeración de acciones SMB. |
+ | `crackmapexec smb <FQDN/IP> -shares -u '' -p ''` | Enumeración de acciones SMB usando autenticación de sesión nula. |
+ | `enum4linux-ng.py <FQDN/IP> -A` | Enumeración de SMB usando enum4linux. |
+ |-------------------------------------------------------------------------------------------------------------------------------------------|
 
 NFS
 
