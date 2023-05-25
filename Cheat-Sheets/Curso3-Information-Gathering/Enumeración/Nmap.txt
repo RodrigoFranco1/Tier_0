@@ -1,6 +1,5 @@
 |----------------------------------| Combinaciones principales de Nmap |------------------------------------------------
 |
-|
 | nmap -sV -sC -A 10.10.11.211 
 |   └─$ -sV: Escanea en busca de Servicios instalados y versión
 |     └─$  -sC: Utiliza los scripts standar relacionados a los servicios
@@ -10,6 +9,9 @@
 |    └─$ -p-: Analiza los 65,535 puertos disponibles en una PC
 |      └─$ --min-rate=2000: Establece la tasa de envío por encima de 2000 paquetes por segundo
 |
+| nmap -sS -sV -sC --min-rate=2000 -A -p- 10.10.11.214 --stats-every=30s
+|    └─$ -sS: Escaneo de tipo SYN (más sigiloso)
+|     └─$ --stats-every=30s: si el escaneo tarda más de 30 segundos comenzará a mostrar por intervalos el avance
 |-----------------------------------------------------------------------------------------------------------------------
 
 MODOS DE ESCANEO
@@ -150,7 +152,7 @@ EVASIÓN
 
 |---------------------------------------| Evasión de Firewall, IDS, IPS | ----------------------------------------------
 | -sS : Syn Scan - Escaneo sigiloso
-| -sT : Concet scan - Escaneo sigiloso que no deja conexiones sin finalizar
+| -sT : Conect scan - Escaneo sigiloso que no deja conexiones sin finalizar
 | -sA : ACK Scan - El más dificil de detectar, ya que solo envía banderas ACK y sel firewall no puede determinar si la conexión se estableció desde la red |                  externa o la red interna.
 | -D RND:5 : Genera 5 IP random como sueñuelos 
 | 
