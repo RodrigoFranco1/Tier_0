@@ -32,19 +32,43 @@
   | dig any domain.com          |  Realiza una consulta DNS para todos los tipos de registros de DNS disponibles para el dominio      |
   |-----------------------------------------------------------------------------------------------------------------------------------|
 
-2- File Transfer Protocol (FTP) (TFTP)
+2- File Transfer Protocol (FTP)/(TFTP)
 
-  |-----------------------------------------------------------------------------------------------------------------------------------------|
-  | Comando                            |         Descripción                                                                                |
-  |-----------------------------------------------------------------------------------------------------------------------------------------|
-  | ftp <IP>                           |        Interactuar con el servicio FTP en el destino.                                              |
-  | nc -nv <FQDN/IP> 21 | Interactuar con el servicio FTP en el destino.                                                                    |
-  | telnet <FQDN/IP> 21 | Interactuar con el servicio FTP en el destino.                                                                    |
-  | openssl s_client -connect <FQDN/IP>:21 -starttls ftp | Interactuar con el servicio FTP en el destino utilizando la conexión cifrada.    |
-  | wget -m --no-passive ftp://hostname:password@[ip o servidor] | Descargar todos los archivos disponibles en el servidor FTP de destino.  |
-  | put [ruta-archivo-local] | sube un archivo al directorio ftp                                                                            |
-  | get [nombre-archivo] | Descarga un archivo del servidor ftp a la maquina local                                                          | 
-  |-----------------------------------------------------------------------------------------------------------------------------------------|
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | Comando                     |         Descripción                                                                                 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | ftp ["ip"]                  |  Nos permite conectarnos con el servicio FTP para probar login anonimo (anonymous@n/a)              |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | nc -nv ["ip"] ["puerto"]    |  Nos permite conectarnos con el servicio FTP para probar login anonimo (anonymous@n/a)              |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | telnet ["ip"] ["puerto"]    |  Nos permite conectarnos con el servicio FTP para probar login anonimo (anonymous@n/a)              |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | openssl s_client -connect 10.129.14.136:21 -starttls ftp    |  Nos permite interactuar con el servicio si usa SSL                 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+
+  |----------------------------------------------------------------------------------------------------------------------------|
+  | Comandos una vez accedido el ftp                                                                                           |
+  |----------------------------------------------------------------------------------------------------------------------------|
+  | Comando              |   Descripción                                                                                       |
+  |----------------------------------------------------------------------------------------------------------------------------|
+  | status               |  Información general de la configuración del servidor                                               |
+  |----------------------------------------------------------------------------------------------------------------------------|
+  | debug                |  Nos da información adicioanl al realizar una transacción                                           |
+  |----------------------------------------------------------------------------------------------------------------------------|
+  | trace                |  Nos da codigos de estado para cada solicitud que se le hace al servidor                            |
+  |----------------------------------------------------------------------------------------------------------------------------|
+  | ls                   |  Lista los recursos, permisos, ids y tamaños                                                        |
+  |----------------------------------------------------------------------------------------------------------------------------|
+  | get ["archivo.txt"]  |   Nos permite descargar un archivo de interés en el equipo local                                    |
+  |----------------------------------------------------------------------------------------------------------------------------|
+  | put                  |   Nos permite cargar un archivo dentro del servidor remoto                                          |
+  |----------------------------------------------------------------------------------------------------------------------------|  
+  | ls -R                |   Nos permite enlistar de forma recursiva todos los recursos a la vez (solo funciona en VSFTP)      |
+  |----------------------------------------------------------------------------------------------------------------------------|  
+  | También podemos usar el comando wget  para tratar de descargar todo el contenido disponible de golpe                       |
+  |----------------------------------------------------------------------------------------------------------------------------|
+  | wget -m --no-passive ftp://anonymous:anonymous@["ip"]                                                                      |
+  |----------------------------------------------------------------------------------------------------------------------------|
   
 3- Server Message Block  (SMB)
 
