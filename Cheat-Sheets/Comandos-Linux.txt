@@ -5,12 +5,10 @@
 | 1- Siempre que estemos interactuando con un sistema sin importar el metodo tenemos que ser concientes de que estaremos interactuando como un usuario del sistema.             |
 | 2- El usuario root es el usuario de mayor privilegio dentro del sistema. 
 | 3 - Cuando nos convertimos en sudo, se genera un token privilege por un periodo de tiempo pequeño que nos evita escribir tantas veces la passwd
-|
-|
-|
-|
-|
-|
+| 4 - Cuando hablamos en linux sobre rutas absolutas o relativas, las absolutas son cuando se especifica la ruta de almacenamiento completa.   
+| 5 - Podemos ejecutar un binarios usando rutas absolutas (ej: /bin/cat /etc/group)
+| 6 - Las variables de entorno en linux son valores relativos que pueden afectar el comportamiento de los programas del sistema. ($PATH, $HOME, $SHELL, $USER)
+| 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
 
@@ -25,34 +23,12 @@
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | id | Imprime en pantalla el  nombre de usuario, los grupos a los que este pertenece y sus IDs | Saber los grupos de pertenencia del usuario puede ser util si pertenecemos a grupos criticos del sistema. |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-
-
-
-
-|---------------------------------------------|
-| Sección de Comandos Información del sistema |
-|---------------------------------------------|
-
-|-------------------------------|
-| Comando | Descripción | Notas |
+| which | Nos permite consultar la ruta absoluta de alguun comando de consola | Se puede usar la variante command -v [comando] si which no existe en el sistema                                             |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| whoami | Imprime en pantalla el nombre de usuario | siempre al interactuar con un sistema tendremos asignado un usuario.                                                                                  |
+| pwd  |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| id | Imprime en pantalla el  nombre de usuario, los grupos a los que este pertenece y sus IDs | Saber los grupos de pertenencia del usuario puede ser util si pertenecemos a grupos criticos del sistema. |
+|  ls  |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-
-
-
-
-|---------------------------------------------|
-| Sección de Comandos Información del sistema |
-|---------------------------------------------|
-
-|-------------------------------|
-| Comando | Descripción | Notas |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| whoami | Imprime en pantalla el nombre de usuario | siempre al interactuar con un sistema tendremos asignado un usuario.                                                                                  |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| id | Imprime en pantalla el  nombre de usuario, los grupos a los que este pertenece y sus IDs | Saber los grupos de pertenencia del usuario puede ser util si pertenecemos a grupos criticos del sistema. |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-
+|  cd  |
+|-------|
+|
